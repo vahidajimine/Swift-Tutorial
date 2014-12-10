@@ -39,8 +39,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         
         // Add a check to make sure this exists
         let cellText: String? = rowData["trackName"] as? String
-        cell.textLabel?.text = cellText
-        cell.imageView?.image = UIImage(named: "Blank52")
+        cell.textLabel.text = cellText
+        cell.imageView.image = UIImage(named: "Blank52")
         
         
         // Get the formatted price string for display in the subtitle
@@ -58,7 +58,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         
         if( image == nil ) {
             // If the image does not exist, we need to download it
-            var imgURL: NSURL = NSURL(string: urlString)
+            var imgURL: NSURL = NSURL(string: urlString)!
             
             // Download an NSData representation of the image at the URL
             let request: NSURLRequest = NSURLRequest(URL: imgURL)
@@ -78,7 +78,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
 
         dispatch_async(dispatch_get_main_queue(), {
             if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
-                cellToUpdate.imageView?.image = image
+                cellToUpdate.imageView.image = image
             }
         })
         
